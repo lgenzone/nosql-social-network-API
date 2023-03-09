@@ -1,9 +1,10 @@
-// connect to MongoDB database
-const { connect, connection } = require('mongoose');
+const mongoose = require('mongoose');
 
-connect('mongodb://localhost/social-network', {
+
+
+mongoose.connect('mongodb://localhost:27017/social_db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-module.exports = connection;
+module.exports = mongoose.connection;
