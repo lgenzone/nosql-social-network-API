@@ -16,7 +16,16 @@ router
     .post(createUser);
 
 // GET, PUT, and DELETE requests /api/users/:userId
+router
+    .route('/:userId')
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser);
 
 // POST and DELETE requests /api/users/:userId/friends/:friendId
+router
+    .route('/:userId/friends/:friendId')
+    .post(addFriend)
+    .delete(deleteFriend);
 
 module.exports - router;
