@@ -1,8 +1,5 @@
 # nosql-social-network-API
- er will be used as the reaction field's subdocument schema in the Thought model.
-
-API Routes
-
+Set up API Routes for Thoughts:
 
 /api/thoughts
 GET to get all thoughts

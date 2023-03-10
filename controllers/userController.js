@@ -30,7 +30,10 @@ module.exports = {
     },
     //PUT to update a user by its _id
     updateUser({ params, body }, res) {
-        User.findOneAndUpdate({ _id: params.userId }, body, {new: true, runValidators: true })
+        User.findOneAndUpdate({ _id: params.userId }, body, {
+            new: true, // returns new user data
+            runValidators: true // validation rules from model 
+        })
         .then(userData => {
             if (!userData) {
                 res.status(404).json({ message: 'No user found with this id!'});
