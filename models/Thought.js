@@ -35,7 +35,7 @@ const thoughtSchema = new Schema({
         type: Date,
         default: Date.now,
         get: function(timestamp) {
-            return new Date(timestamp).toLocaleString('en-US', { timeZone: 'UTC '});
+            return new Date(timestamp).toLocaleString('en-US', { timeZone: 'UTC'});
         },
     },
     username: { // the user that created this thought

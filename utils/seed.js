@@ -26,9 +26,26 @@ const users = [
     },
 ];
 
+const thoughts = [
+    {
+        thoughtText: 'Excited to announce that I got a promotion at work today!',
+        username: 'Sophie',
+    },
+    {
+        thoughtText: 'Thinking about booking a trip to Denver. Any restaurant recommendations??',
+        username: 'Ethan',
+    },
+    {
+        thoughtText: 'Need a new show to binge! What is everyone watching right now?',
+        username: 'Isabelle',
+    },
+];
+
 const seedDB = async () => {
     await  User.deleteMany({});
-    await User.insertMany(users);
+    await User.collection.insertMany(users);
+    await Thought.deleteMany({});
+    await Thought.collection.insertMany(thoughts);
 };
 
 seedDB().then(() => {
