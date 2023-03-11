@@ -24,6 +24,11 @@ const users = [
         username: 'Ellie',
         email: 'ellie@mail.com'
     },
+    {
+        username: 'Demo',
+        email: 'demo@mail.com'
+    },
+
 ];
 
 const thoughts = [
@@ -38,6 +43,14 @@ const thoughts = [
     {
         thoughtText: 'Need a new show to binge! What is everyone watching right now?',
         username: 'Isabelle',
+    },
+    {
+        thoughtText: 'This is my demo thought',
+        username: 'Charlie',
+    },
+    {
+        thoughtText: 'I should probably delete this lol',
+        username: 'Sarah',
     },
 ];
 

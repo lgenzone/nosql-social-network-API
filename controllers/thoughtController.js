@@ -57,26 +57,15 @@ module.exports = {
     //DELETE to remove a thought by its _id
     deleteThought({ params }, res) {
         Thought.findOneAndDelete({ _id: params.thoughtId })
-        .then((thought) => {
-            if(!thought) {
-                res.status(404).json({ message: 'No thought found with this id!'});
-                return;
+          .then(thoughtData => {
+            if (!thoughtData) {
+              res.status(404).json({ message: 'No thought found with this id!'});
+              return;
             }
-            return User.findOneAndUpdate(
-                { _id: thought.userId },
-                { $pull: { thoughts: params.thoughtId } },
-                { new: true }
-            );
-        })
-        .then((userData) => {
-            if(!userData) {
-                res.status(404).json({ message: 'No user found with this id!' });
-                return;  
-            }
-            res.json({ message: 'Thought deleted successfully!'})
-        })
-        .catch((err) => res.status(500).json(err));
-    },   
+            res.json({ message: 'Thought deleted!'});
+          })
+          .catch(err => res.status(400).json(err));
+      },  
 // /api/thoughts/:thoughtId/reactions
     //POST to create a reaction stored in a single thought's reactions array field
     createReaction({ params, body }, res) {

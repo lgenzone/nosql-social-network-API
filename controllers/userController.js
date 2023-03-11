@@ -12,7 +12,11 @@ module.exports = {
     getUserById({ params }, res) {
         User.findOne({ _id: params.userId })
         .populate({
-            path: ['thoughts', 'friends'],
+            path: 'thoughts',
+            select: '__v'
+        })
+        .populate({
+            path:  'friends',
             select: '__v'
         })
         .select('-__v')
@@ -51,11 +55,9 @@ module.exports = {
               res.status(404).json({ message: 'No user found with this id!' });
               return;
             }
-            //BONUS: Remove a user's associated thoughts when deleted
-            return Thought.deleteMany({ _id: { $in: userData.thoughts } });
           })
           .then(() => {
-            res.json({ message: 'User and associated thoughts deleted!' });
+            res.json({ message: 'User deleted!' });
           })
           .catch(err => res.status(400).json(err));
       },
